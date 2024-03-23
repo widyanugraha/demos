@@ -1,6 +1,7 @@
 ---
 
 - name: Get hostname and IP address
+#https://github.com/ansible-semaphore/semaphore/issues/1611
   hosts: "{{ target_hosts | default('all') }}"
   ignore_unreachable: yes
   any_errors_fatal: false
