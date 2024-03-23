@@ -1,8 +1,16 @@
-lxc:
-  hosts:
-    10.2.2.31:
-loc:
-  hosts:
-    10.1.1.201:
-    10.1.1.202:
-    10.1.1.203:
+all:
+#  hosts:
+#    10.1.1.1:
+#      host_var: value
+#  vars:
+#    group_all_var: value
+  children:
+    lxc:
+      hosts:
+        10.2.2.31:
+    loc:
+      hosts:
+        10.1.1.[201:203]:
+
+#ref: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yaml_inventory.html
+#ref: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html
