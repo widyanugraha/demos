@@ -5,9 +5,15 @@
   gather_facts: yes
   tasks:
     - name: ping
-      shell: ping -c 3 -w 2 {{ ansible_host }}
-      delegate_to: localhost
-      ignore_errors: true
+      block:
+        - name: ping
+          shell: ping -c 1 1.1.1.1
+          register: ping_rc
+          ignore_errors: true
+        - name: ping out var
+          debug: var=ping_rc
+        - name: ping out msg
+          debug: msg="{{ping_rc.stdout_lines}}"
     - name: Display hostname and IP address
       debug:
         msg: "Hostname: {{ ansible_hostname }}, IP Address: {{ ansible_default_ipv4.address }}"
