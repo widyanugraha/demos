@@ -5,8 +5,9 @@
   gather_facts: yes
   tasks:
     - name: ping
-      ansible.builtin.ping:
-        data: crash
+      shell: ping -c 3 -w 2 {{ ansible_host }}
+      delegate_to: localhost
+      ignore_errors: true
     - name: Display hostname and IP address
       debug:
         msg: "Hostname: {{ ansible_hostname }}, IP Address: {{ ansible_default_ipv4.address }}"
