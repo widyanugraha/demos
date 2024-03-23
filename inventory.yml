@@ -1,5 +1,8 @@
 all:
-#  hosts:
+  hosts:
+    localhost:
+      ansible_connection: local
+      ansible_user: ansible
 #    10.1.1.1:
 #      host_var: value
 #  vars:
