@@ -1,7 +1,7 @@
 ---
 
 - name: Get hostname and IP address
-  hosts: all
+  hosts: "{{ target_hosts | default('all') }}"
   ignore_unreachable: yes
   any_errors_fatal: false
   become: yes
